@@ -15,3 +15,11 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.name
+
+class Doctor(models.Model):
+    name = models.CharField(max_length=255)
+    specialization = models.CharField(max_length=255)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='doctors')
+
+    def __str__(self):
+        return self.name

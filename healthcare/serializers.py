@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Patient, Doctor
+from .models import Patient, Doctor, PatientDoctorMapping
 
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,3 +12,8 @@ class DoctorSerializer(serializers.ModelSerializer):
         model = Doctor
         fields = ['id', 'name', 'specialization', 'created_by']
         read_only_fields = ['created_by']
+
+class PatientDoctorMappingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PatientDoctorMapping
+        fields = ['id', 'patient', 'doctor']
